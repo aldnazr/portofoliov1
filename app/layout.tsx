@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,19 +13,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Software Engineer Portfolio",
-  description:
-    "Professional Software Engineer portfolio showcasing projects, skills, and experience in full-stack development.",
-  keywords: [
-    "software engineer",
-    "developer",
-    "portfolio",
-    "full-stack",
-    "web development",
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,7 +23,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
