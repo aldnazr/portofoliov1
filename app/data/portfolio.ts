@@ -15,22 +15,21 @@ export type Project = {
 };
 
 export const profile = {
-  name: "Raka Pratama",
-  initials: "RP",
+  name: "M. Alauddin Azhary",
+  initials: "AZ",
   role: "Product-minded Frontend Developer",
-  location: "Jakarta, Indonesia",
-  availability: "Available for selected projects",
-  email: "hello@rakapratama.dev",
+  location: "Surabaya, Indonesia",
+  availability: "Open to works",
+  email: "alauddinazhary05@gmail.com",
   hero: "Saya merancang dan membangun antarmuka digital yang tenang, cepat, dan terasa jelas sejak interaksi pertama.",
   about:
     "Frontend developer dengan perhatian besar pada detail, sistem desain, dan pengalaman pengguna. Saya membantu tim mengubah kebutuhan bisnis yang rumit menjadi produk web yang mudah digunakan.",
   skills: [
+    "Mobile Dev",
     "Frontend architecture",
     "Design systems",
-    "React & Next.js",
     "UX implementation",
     "Performance",
-    "Technical direction",
   ],
   stats: [
     { value: "05+", label: "tahun membangun produk" },

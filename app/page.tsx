@@ -70,7 +70,7 @@ export default function Home() {
               {profile.availability}
             </p>
             <h1>
-              Hai, saya Raka.
+              Hai, saya Azhar.
               <br />
               Saya membuat produk web yang <em>jelas.</em>
             </h1>
