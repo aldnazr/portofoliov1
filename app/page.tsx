@@ -103,7 +103,7 @@ export default function Home() {
 
         <section
           id="tentang"
-          className="section-shell section-space about-section lg:px-8"
+          className="section-shell section-space about-section lg:px-8 items-center"
         >
           <div className="motion-enter">
             <SectionHeading
