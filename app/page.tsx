@@ -14,6 +14,7 @@ import {
   projects,
 } from "@/app/data/portfolio";
 import { ReactNode } from "react";
+import { Link } from "@heroui/react";
 
 function ExternalLink({
   href,
@@ -46,9 +47,9 @@ export default function Home() {
 
           <nav aria-label="Navigasi utama" className="site-nav">
             {navigation.map((item) => (
-              <a key={item.href} href={item.href}>
+              <Link key={item.href} href={item.href}>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 

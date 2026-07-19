@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Raka Pratama — Frontend Developer",
+  title: "Alauddin Azhar — Portofolio",
   description:
-    "Portfolio Raka Pratama, frontend developer yang merancang pengalaman digital yang jelas, cepat, dan berkesan.",
+    "Portfolio M. Alauddin Azhary, frontend developer yang merancang pengalaman digital yang berguna untuk user.",
 };
 
 export default function RootLayout({
