@@ -55,9 +55,9 @@ export default function Home() {
 
           <div className="site-header__actions">
             <ThemeToggle />
-            <a href={`mailto:${profile.email}`} className="header-contact">
+            <Link href={`mailto:${profile.email}`} className="header-contact">
               Mari bicara
-            </a>
+            </Link>
           </div>
         </div>
       </header>
