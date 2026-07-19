@@ -691,17 +691,20 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .project-card--text {
+  .project-card--text,
+  .project-card--visual {
     grid-column: span 2;
     display: grid;
     grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr);
   }
 
-  .project-card--text .project-card__text-visual {
+  .project-card--text .project-card__text-visual,
+  .project-card--visual .project-card__image-wrap {
     min-height: 100%;
   }
 
-  .project-card--text .project-card__content {
+  .project-card--text .project-card__content,
+  .project-card--visual .project-card__content {
     padding: 2rem;
   }
 

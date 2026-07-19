@@ -9,8 +9,10 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   return (
-    <article className={`project-card ${project.image ? "project-card--visual" : "project-card--text"}`}>
-      {project.image ? (
+    <article
+      className={`project-card ${project.image ? "project-card--visual" : "project-card--text"}`}
+    >
+      {project.image ?
         <div className="project-card__image-wrap">
           <Image
             src={project.image.src}
@@ -21,17 +23,18 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
             className="project-card__image"
           />
         </div>
-      ) : (
-        <div className="project-card__text-visual" aria-hidden="true">
+      : <div className="project-card__text-visual" aria-hidden="true">
           <span>{project.number}</span>
           <p>Product / system / detail</p>
         </div>
-      )}
+      }
 
       <div className="project-card__content">
         <div className="flex items-start justify-between gap-5">
           <p className="eyebrow">{project.category}</p>
-          <span className="font-mono text-xs text-[var(--accent)]">{project.number}</span>
+          <span className="font-mono text-xs text-[var(--accent)]">
+            {project.number}
+          </span>
         </div>
         <h3>{project.name}</h3>
         <p className="project-card__description">{project.description}</p>
@@ -42,21 +45,29 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
               <li key={technology}>{technology}</li>
             ))}
           </ul>
-          {project.demoUrl || project.sourceUrl ? (
+          {project.demoUrl || project.sourceUrl ?
             <div className="flex flex-wrap gap-4">
-              {project.demoUrl ? <ProjectLink href={project.demoUrl}>Demo</ProjectLink> : null}
-              {project.sourceUrl ? <ProjectLink href={project.sourceUrl}>Source</ProjectLink> : null}
+              {project.demoUrl ?
+                <ProjectLink href={project.demoUrl}>Demo</ProjectLink>
+              : null}
+              {project.sourceUrl ?
+                <ProjectLink href={project.sourceUrl}>Source</ProjectLink>
+              : null}
             </div>
-          ) : (
-            <p className="project-card__private">Case study on request</p>
-          )}
+          : <p className="project-card__private">Case study on request</p>}
         </div>
       </div>
     </article>
   );
 }
 
-function ProjectLink({ href, children }: { href: string; children: React.ReactNode }) {
+function ProjectLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="project-link">
       {children}
