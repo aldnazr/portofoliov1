@@ -1,4 +1,5 @@
 import { Inter, JetBrains_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,6 +14,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+export const metadata: Metadata = {
+  title: "Raka Pratama — Frontend Developer",
+  description:
+    "Portfolio Raka Pratama, frontend developer yang merancang pengalaman digital yang jelas, cepat, dan berkesan.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body>{children}</body>
