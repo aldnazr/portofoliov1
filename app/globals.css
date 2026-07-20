@@ -680,7 +680,6 @@ body {
 }
 
 @media (min-width: 640px) {
-
   .section-shell,
   .site-header__inner {
     width: min(100% - 4rem, 74rem);

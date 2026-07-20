@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
 
-const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
+const themes: { value: Theme; label: string; icon: ReactNode }[] = [
   {
     value: "light",
     label: "Tema terang",

@@ -1,6 +1,8 @@
 import { Inter, JetBrains_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import { Providers } from "./providers";
+import { ReactNode } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,15 +25,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html
       lang="id"
-      className={`dark ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      suppressHydrationWarning
     >
       <body className="bg-background text-foreground">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
