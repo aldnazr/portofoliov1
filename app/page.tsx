@@ -60,7 +60,7 @@ export default function Home() {
             <span className="hidden sm:inline">{profile.name}</span>
           </a>
 
-          <nav aria-label="Navigasi utama">
+          <nav aria-label="Navigasi utama" className="hidden lg:block">
             {navigation.map((item) => (
               <Button
                 variant="ghost"
