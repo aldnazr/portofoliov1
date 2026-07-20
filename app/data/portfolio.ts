@@ -12,6 +12,7 @@ export type Project = {
   };
   demoUrl?: string;
   sourceUrl?: string;
+  playStoreUrl?: string;
 };
 
 export const profile = {
@@ -55,9 +56,11 @@ export const projects: Project[] = [
     result:
       "Pengguna merasa puas dengan aplikasi tampilan dan desain sistem yang baru.",
     image: {
-      src: "/projects/nusapay-dashboard.svg",
+      src: "/projects/driver.png",
       alt: "Visual abstrak antarmuka dashboard NusaPay",
     },
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.ahsanxpress.dev",
   },
   {
     number: "02",

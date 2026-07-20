@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ArrowUpRightIcon } from "@/components/icons";
 import type { Project } from "@/app/data/portfolio";
+import { Link } from "@heroui/react";
+import { ReactNode } from "react";
 
 type ProjectCardProps = {
   project: Project;
@@ -45,13 +47,18 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
               <li key={technology}>{technology}</li>
             ))}
           </ul>
-          {project.demoUrl || project.sourceUrl ?
+          {project.demoUrl || project.sourceUrl || project.playStoreUrl ?
             <div className="flex flex-wrap gap-4">
               {project.demoUrl ?
                 <ProjectLink href={project.demoUrl}>Demo</ProjectLink>
               : null}
               {project.sourceUrl ?
                 <ProjectLink href={project.sourceUrl}>Source</ProjectLink>
+              : null}
+              {project.playStoreUrl ?
+                <ProjectLink href={project.playStoreUrl}>
+                  Play Store
+                </ProjectLink>
               : null}
             </div>
           : <p className="project-card__private">Case study on request</p>}
@@ -66,12 +73,12 @@ function ProjectLink({
   children,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="project-link">
+    <Link href={href} target="_blank" rel="noreferrer" className="project-link">
       {children}
       <ArrowUpRightIcon className="size-3.5" />
-    </a>
+    </Link>
   );
 }
