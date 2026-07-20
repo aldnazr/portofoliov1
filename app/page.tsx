@@ -65,15 +65,15 @@ export default function Home() {
       <main id="utama">
         <section className="hero section-shell lg:px-8">
           <div className="hero__copy motion-enter">
-            <p className="hero__greeting">hello, world</p>
-            <p className="availability">
+            {/* <p className="hero__greeting">hello, world</p> */}
+            {/* <p className="availability">
               <span aria-hidden="true" />
               {profile.availability}
-            </p>
+            </p> */}
             <h1>
               Hai, saya Azhar.
               <br />
-              Saya membuat produk web yang <em>jelas.</em>
+              Saya membangun solusi digital yang <em>bermanfaat.</em>
             </h1>
             <p className="hero__summary">{profile.hero}</p>
             <div className="hero__actions">
@@ -86,19 +86,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <aside className="hero__aside motion-enter motion-delay-2">
+          <aside className="hero__aside motion-enter motion-delay-2">
             <p className="eyebrow">Based in</p>
             <p className="hero__location">{profile.location}</p>
             <div className="hero__socials">
-              {profile.socialLinks.slice(0, 2).map((link) => <ExternalLink key={link.label} href={link.href}>{link.label}</ExternalLink>)}
+              {profile.socialLinks.slice(0, 2).map((link) => (
+                <ExternalLink key={link.label} href={link.href}>
+                  {link.label}
+                </ExternalLink>
+              ))}
             </div>
-          </aside> */}
+          </aside>
         </section>
 
         {/* <section className="focus-strip section-shell" aria-label="Fokus kerja">
           <p className="eyebrow">I help teams with</p>
           <div className="focus-strip__items">
-            <span>Product UI</span><span>Frontend systems</span><span>Design implementation</span>
+            <span>Product UI</span>
+            <span>Frontend systems</span>
+            <span>Design implementation</span>
           </div>
         </section> */}
 
@@ -110,7 +116,7 @@ export default function Home() {
             <SectionHeading
               number="01"
               eyebrow="About"
-              title="Mengubah kompleksitas menjadi antarmuka yang terasa natural."
+              title="Membangun solusi digital yang sederhana, cepat, dan mudah digunakan."
             />
           </div>
           <div className="about-section__content motion-enter motion-delay-1">
@@ -128,8 +134,8 @@ export default function Home() {
             <SectionHeading
               number="02"
               eyebrow="Selected work"
-              title="Proyek dengan konteks, bukan sekadar tampilan."
-              description="Sebagian studi kasus memakai visual untuk memberi rasa produk; sebagian lain dibiarkan berbasis tipografi agar ceritanya tetap menjadi fokus."
+              title="Proyek dengan tujuan, bukan sekadar hasil."
+              description="Setiap proyek menghadirkan tantangan yang berbeda, mulai dari perancangan, pengembangan, hingga implementasi untuk menghasilkan solusi yang sesuai dengan kebutuhan."
             />
             <p className="section-intro__note">
               Detail dan metrik disederhanakan untuk menjaga kerahasiaan
@@ -155,7 +161,7 @@ export default function Home() {
             <SectionHeading
               number="03"
               eyebrow="Journey"
-              title="Dibentuk oleh produk, studio, dan banyak iterasi."
+              title="Dibangun dari pengalaman pribadi maupun profesional."
             />
           </div>
           <ol className="experience-list motion-enter motion-delay-1">
@@ -190,7 +196,7 @@ export default function Home() {
             <p className="eyebrow">04 / Let&apos;s work together</p>
             <h2>Punya tantangan yang menarik untuk diselesaikan?</h2>
             <p>
-              Ceritakan konteks dan ambisinya. Saya terbuka untuk proyek produk,
+              Ceritakan kebutuhan anda. Saya terbuka untuk proyek produk,
               kolaborasi, dan percakapan yang baik.
             </p>
             <a href={`mailto:${profile.email}`} className="button-primary">

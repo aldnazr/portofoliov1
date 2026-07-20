@@ -32,7 +32,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
       <div className="project-card__content">
         <div className="flex items-start justify-between gap-5">
           <p className="eyebrow">{project.category}</p>
-          <span className="font-mono text-xs text-[var(--accent)]">
+          <span className="font-mono text-xs text-accent">
             {project.number}
           </span>
         </div>
