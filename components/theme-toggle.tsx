@@ -1,60 +1,33 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { ReactNode, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark" | "system";
 
 const themes: { value: Theme; label: string; icon: ReactNode }[] = [
-  {
-    value: "light",
-    label: "Tema terang",
-    icon: <SunIcon />,
-  },
-  {
-    value: "dark",
-    label: "Tema gelap",
-    icon: <MoonIcon />,
-  },
-  {
-    value: "system",
-    label: "Ikuti tema sistem",
-    icon: <SystemIcon />,
-  },
+  { value: "light", label: "Tema terang", icon: <SunIcon /> },
+  { value: "dark", label: "Tema gelap", icon: <MoonIcon /> },
+  { value: "system", label: "Ikuti tema sistem", icon: <SystemIcon /> },
 ];
 
-function setDocumentTheme(theme: Theme) {
-  const root = document.documentElement;
+function subscribe() {
+  return () => { };
+}
 
-  if (theme === "system") {
-    delete root.dataset.theme;
-    return;
-  }
-
-  root.dataset.theme = theme;
+function useMounted() {
+  return useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("system");
+  const { theme, setTheme } = useTheme();
+  const mounted = useMounted();
 
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem("portfolio-theme");
-    const initialTheme: Theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : "system";
-
-    setDocumentTheme(initialTheme);
-    queueMicrotask(() => setTheme(initialTheme));
-  }, []);
-
-  function changeTheme(nextTheme: Theme) {
-    setTheme(nextTheme);
-    setDocumentTheme(nextTheme);
-
-    if (nextTheme === "system") {
-      window.localStorage.removeItem("portfolio-theme");
-      return;
-    }
-
-    window.localStorage.setItem("portfolio-theme", nextTheme);
-  }
+  if (!mounted) return null;
 
   return (
     <div className="theme-toggle" role="group" aria-label="Pilih tema tampilan">
@@ -66,7 +39,7 @@ export function ThemeToggle() {
           aria-label={item.label}
           aria-pressed={theme === item.value}
           title={item.label}
-          onClick={() => changeTheme(item.value)}
+          onClick={() => setTheme(item.value)}
         >
           {item.icon}
         </button>

@@ -175,7 +175,7 @@ export default function Home() {
           </section>
           {totalPages > 1 && (
             <div className="flex justify-center mt-10">
-              <Pagination className="justify-center">
+              <Pagination className="justify-center w-fit">
                 <Pagination.Content>
                   <Pagination.Item>
                     <Pagination.Previous
