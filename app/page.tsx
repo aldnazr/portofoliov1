@@ -92,7 +92,7 @@ export default function Home() {
               <a href="#project" className="button-primary">
                 Lihat project <ArrowDownIcon className="size-4" />
               </a>
-              <a href="#tentang" className="inline-arrow-link">
+              <a href="#about" className="inline-arrow-link">
                 Tentang saya <ArrowRightIcon className="size-4" />
               </a>
             </div>
