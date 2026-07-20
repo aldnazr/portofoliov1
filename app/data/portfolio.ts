@@ -4,8 +4,8 @@ export type Project = {
   category: string;
   description: string;
   technologies: string[];
-  role: string;
-  result: string;
+  role?: string;
+  result?: string;
   image?: {
     src: string;
     alt: string;
@@ -38,10 +38,10 @@ export const profile = {
 } as const;
 
 export const navigation = [
-  { label: "Tentang", href: "#tentang" },
-  { label: "Proyek", href: "#proyek" },
-  { label: "Pengalaman", href: "#pengalaman" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Tentang", href: "#about" },
+  { label: "Proyek", href: "#project" },
+  { label: "Pengalaman", href: "#experience" },
+  { label: "Kontak", href: "#contact" },
 ] as const;
 
 export const projects: Project[] = [
@@ -52,9 +52,6 @@ export const projects: Project[] = [
     description:
       "Memperbarui seluruh ekosistem mulai dari mobile apps (customer & driver), dan juga web admin.",
     technologies: ["Next.js", "Flutter"],
-    role: "Lead frontend & design-system partner",
-    result:
-      "Pengguna merasa puas dengan aplikasi tampilan dan desain sistem yang baru.",
     image: {
       src: "/projects/driver.png",
       alt: "Visual abstrak antarmuka dashboard NusaPay",
@@ -64,29 +61,35 @@ export const projects: Project[] = [
   },
   {
     number: "02",
-    name: "RuangKerja",
-    category: "Workspace management SaaS",
+    name: "Web SmartVet",
+    category: "Petshop Management SaaS",
     description:
-      "Membangun pengalaman onboarding dan pengelolaan ruang kerja yang memberi konteks tepat pada setiap langkah pengguna.",
-    technologies: ["React", "Next.js", "REST API", "Figma"],
-    role: "Frontend developer",
-    result:
-      "Membantu tim merilis fondasi produk baru dalam siklus yang lebih singkat.",
+      "Klinik petshop untuk manajemen data pasien hewan, pemeriksaan, pengobatan, hingga penjadwalan appointment.",
+    technologies: ["Laravel", "PHP", "PostgreSQL", "Livewire"],
+    image: {
+      src: "/projects/nusapay-dashboard.svg",
+      alt: "Visual abstrak dashboard SmartVet",
+    },
   },
   {
     number: "03",
-    name: "Karsa Studio",
-    category: "Creative studio website",
+    name: "Web Inventory SCP",
+    category: "Inventory Management System",
     description:
-      "Situs editorial yang menempatkan karya dan sudut pandang studio sebagai pusat pengalaman, tanpa elemen yang berlebihan.",
-    technologies: ["Next.js", "Contentful", "Framer Motion", "Vercel"],
-    role: "Independent developer",
-    result:
-      "Meningkatkan keterbacaan konten dan memberi tim ruang untuk memperbarui cerita mereka sendiri.",
+      "Website inventory untuk manajemen data barang, supplier, pembelian, penjualan, dan laporan. yang berfokus pada perusahaan persediaan material",
+    technologies: ["Laravel", "PHP", "MySQL", "Livewire"],
     image: {
       src: "/projects/karsa-studio.svg",
       alt: "Visual abstrak komposisi kreatif untuk Karsa Studio",
     },
+  },
+  {
+    number: "04",
+    name: "Web CatatPro",
+    category: "Accounting Software",
+    description:
+      "Software untuk kebutuhan pencatatan pengeluaran dan pemasukan, dilengkapi dengan dashboard, laporan, dan grafik untuk memudahkan pengguna dalam mengelola keuangan mereka.",
+    technologies: ["Laravel", "PHP", "MySQL", "Livewire"],
   },
 ];
 

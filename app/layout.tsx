@@ -28,9 +28,11 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`dark ${inter.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body className="bg-background text-foreground">
+        {children}
+      </body>
     </html>
   );
 }

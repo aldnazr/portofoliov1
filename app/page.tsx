@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   ArrowDownIcon,
   ArrowRightIcon,
@@ -14,7 +17,8 @@ import {
   projects,
 } from "@/app/data/portfolio";
 import { ReactNode } from "react";
-import { Link } from "@heroui/react";
+import { Link, Pagination } from "@heroui/react";
+import router from "next/router";
 
 function ExternalLink({
   href,
@@ -32,12 +36,20 @@ function ExternalLink({
 }
 
 export default function Home() {
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 3;
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
+
+  const indexOfLastProject = page * itemsPerPage;
+  const indexOfFirstProject = indexOfLastProject - itemsPerPage;
+  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+
   return (
     <div className="portfolio-shell">
       <header className="site-header lg:px-8">
         <div className="site-header__inner">
           <a
-            href="#utama"
+            href="#main"
             className="site-mark"
             aria-label="Kembali ke bagian utama"
           >
@@ -62,7 +74,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main id="utama">
+      <main id="main">
         <section className="hero section-shell lg:px-8">
           <div className="hero__copy motion-enter">
             {/* <p className="hero__greeting">hello, world</p> */}
@@ -71,14 +83,14 @@ export default function Home() {
               {profile.availability}
             </p> */}
             <h1>
-              Hai, saya Azhar.
+              Halo, saya Azhar.
               <br />
               Saya membangun solusi digital yang <em>bermanfaat.</em>
             </h1>
             <p className="hero__summary">{profile.hero}</p>
             <div className="hero__actions">
-              <a href="#proyek" className="button-primary">
-                Lihat proyek <ArrowDownIcon className="size-4" />
+              <a href="#project" className="button-primary">
+                Lihat project <ArrowDownIcon className="size-4" />
               </a>
               <a href="#tentang" className="inline-arrow-link">
                 Tentang saya <ArrowRightIcon className="size-4" />
@@ -109,7 +121,7 @@ export default function Home() {
         </section> */}
 
         <section
-          id="tentang"
+          id="about"
           className="section-shell section-space about-section lg:px-8 items-center"
         >
           <div className="motion-enter">
@@ -129,7 +141,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proyek" className="section-shell section-space lg:px-8">
+        <section id="project" className="section-shell section-space lg:px-8">
           <div className="section-intro motion-enter">
             <SectionHeading
               number="02"
@@ -143,7 +155,7 @@ export default function Home() {
             </p>
           </div>
           <div className="project-grid">
-            {projects.map((project, index) => (
+            {currentProjects.map((project, index) => (
               <ProjectCard
                 key={project.number}
                 project={project}
@@ -151,10 +163,46 @@ export default function Home() {
               />
             ))}
           </div>
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-10">
+              <Pagination className="justify-center">
+                <Pagination.Content>
+                  <Pagination.Item>
+                    <Pagination.Previous isDisabled={page === 1} onPress={() => {
+                      setPage((p) => p - 1)
+                      window.location.href = "#project"
+                    }}>
+                      <Pagination.PreviousIcon />
+                      <span>Previous</span>
+                    </Pagination.Previous>
+                  </Pagination.Item>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Pagination.Item key={p}>
+                      <Pagination.Link isActive={p === page} onPress={() => {
+                        setPage(p)
+                        window.location.href = "#project"
+                      }}>
+                        {p}
+                      </Pagination.Link>
+                    </Pagination.Item>
+                  ))}
+                  <Pagination.Item>
+                    <Pagination.Next isDisabled={page === totalPages} onPress={() => {
+                      setPage((p) => p + 1)
+                      window.location.href = "#project"
+                    }}>
+                      <span>Next</span>
+                      <Pagination.NextIcon />
+                    </Pagination.Next>
+                  </Pagination.Item>
+                </Pagination.Content>
+              </Pagination>
+            </div>
+          )}
         </section>
 
         <section
-          id="pengalaman"
+          id="experience"
           className="section-shell section-space experience-section lg:px-8"
         >
           <div className="motion-enter">
@@ -191,7 +239,7 @@ export default function Home() {
           </ol>
         </section>
 
-        <section id="kontak" className="contact-section">
+        <section id="contact" className="contact-section">
           <div className="section-shell contact-section__inner">
             <p className="eyebrow">04 / Let&apos;s work together</p>
             <h2>Punya tantangan yang menarik untuk diselesaikan?</h2>
