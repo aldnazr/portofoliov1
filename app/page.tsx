@@ -65,7 +65,7 @@ export default function Home() {
               <Button
                 variant="ghost"
                 key={item.href}
-                className="opacity-50 hover:opacity-100"
+                className="text-muted hover:text-foreground"
                 onPress={() => {
                   window.location.href = item.href;
                 }}
