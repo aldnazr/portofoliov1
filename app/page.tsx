@@ -17,7 +17,7 @@ import {
   projects,
 } from "@/app/data/portfolio";
 import { ReactNode } from "react";
-import { Link, Pagination } from "@heroui/react";
+import { Button, Link, Pagination } from "@heroui/react";
 import router from "next/router";
 
 function ExternalLink({
@@ -42,7 +42,10 @@ export default function Home() {
 
   const indexOfLastProject = page * itemsPerPage;
   const indexOfFirstProject = indexOfLastProject - itemsPerPage;
-  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
+  const currentProjects = projects.slice(
+    indexOfFirstProject,
+    indexOfLastProject,
+  );
 
   return (
     <div className="portfolio-shell">
@@ -57,11 +60,18 @@ export default function Home() {
             <span className="hidden sm:inline">{profile.name}</span>
           </a>
 
-          <nav aria-label="Navigasi utama" className="site-nav">
+          <nav aria-label="Navigasi utama">
             {navigation.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <Button
+                variant="ghost"
+                key={item.href}
+                className="opacity-50 hover:opacity-100"
+                onPress={() => {
+                  window.location.href = item.href;
+                }}
+              >
                 {item.label}
-              </Link>
+              </Button>
             ))}
           </nav>
 
@@ -154,7 +164,7 @@ export default function Home() {
               kolaborasi.
             </p>
           </div>
-          <div className="project-grid">
+          <section id="listProject" className="project-grid">
             {currentProjects.map((project, index) => (
               <ProjectCard
                 key={project.number}
@@ -162,35 +172,46 @@ export default function Home() {
                 priority={index === 0}
               />
             ))}
-          </div>
+          </section>
           {totalPages > 1 && (
             <div className="flex justify-center mt-10">
               <Pagination className="justify-center">
                 <Pagination.Content>
                   <Pagination.Item>
-                    <Pagination.Previous isDisabled={page === 1} onPress={() => {
-                      setPage((p) => p - 1)
-                      window.location.href = "#project"
-                    }}>
+                    <Pagination.Previous
+                      isDisabled={page === 1}
+                      onPress={() => {
+                        setPage((p) => p - 1);
+                        window.location.href = "#listProject";
+                      }}
+                    >
                       <Pagination.PreviousIcon />
                       <span>Previous</span>
                     </Pagination.Previous>
                   </Pagination.Item>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <Pagination.Item key={p}>
-                      <Pagination.Link isActive={p === page} onPress={() => {
-                        setPage(p)
-                        window.location.href = "#project"
-                      }}>
-                        {p}
-                      </Pagination.Link>
-                    </Pagination.Item>
-                  ))}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (p) => (
+                      <Pagination.Item key={p}>
+                        <Pagination.Link
+                          isActive={p === page}
+                          onPress={() => {
+                            setPage(p);
+                            window.location.href = "#listProject";
+                          }}
+                        >
+                          {p}
+                        </Pagination.Link>
+                      </Pagination.Item>
+                    ),
+                  )}
                   <Pagination.Item>
-                    <Pagination.Next isDisabled={page === totalPages} onPress={() => {
-                      setPage((p) => p + 1)
-                      window.location.href = "#project"
-                    }}>
+                    <Pagination.Next
+                      isDisabled={page === totalPages}
+                      onPress={() => {
+                        setPage((p) => p + 1);
+                        window.location.href = "#listProject";
+                      }}
+                    >
                       <span>Next</span>
                       <Pagination.NextIcon />
                     </Pagination.Next>
