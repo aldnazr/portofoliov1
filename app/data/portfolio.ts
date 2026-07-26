@@ -91,6 +91,19 @@ export const projects: Project[] = [
       "Software untuk kebutuhan pencatatan pengeluaran dan pemasukan, dilengkapi dengan dashboard, laporan, dan grafik untuk memudahkan pengguna dalam mengelola keuangan mereka.",
     technologies: ["Laravel", "PHP", "MySQL", "Livewire"],
   },
+  {
+    number: "05",
+    name: "Vault Chain",
+    category: "Crypto APP",
+    description:
+      "Aplikasi mobile untuk memantau harga dan trending cryptocurrency terkini.",
+    technologies: ["Flutter"],
+    image: {
+      src: "/projects/bitcoin.png",
+      alt: "Visual abstrak antarmuka dashboard NusaPay",
+    },
+    sourceUrl: "https://github.com/aldnazr/vault-chain.git",
+  },
 ];
 
 export const experience = [
